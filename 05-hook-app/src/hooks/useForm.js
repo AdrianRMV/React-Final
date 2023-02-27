@@ -5,6 +5,7 @@ export const useForm = (initialForm = {}) => {
 
     const onInputChange = ({ target }) => {
         const { name, value } = target;
+        console.log(value)
 
         // Deja el objeto formState con lo que ya estaba y solo modifica el campo por el nombre dado, utilizando los corchetes para identificar el nombre de la propiedad "[ name ]"
         setFormState({
@@ -18,6 +19,7 @@ export const useForm = (initialForm = {}) => {
     };
 
     return {
+        ...formState,
         formState,
         onInputChange,
         onResetForm,
