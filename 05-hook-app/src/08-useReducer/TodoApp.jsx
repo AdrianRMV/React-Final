@@ -19,8 +19,13 @@ export const TodoApp = () => {
     const [todos, dispatch] = useReducer(todoReducer, initialState);
 
     const handlerTodoAdd = (todo) => {
-        console.log({todo})
-    }
+        const action = {
+            type: '[TODO] add todo',
+            payload: todo,
+        };
+
+        dispatch(action);
+    };
 
     return (
         <>
@@ -36,7 +41,7 @@ export const TodoApp = () => {
                 <div className="col-5">
                     <h4>Agregar TODO</h4>
                     <hr />
-                    <TodoAdd handlerTodoAdd={handlerTodoAdd}/>
+                    <TodoAdd handlerTodoAdd={handlerTodoAdd} />
                 </div>
             </div>
         </>

@@ -2,10 +2,6 @@ import { useState } from 'react';
 import { useForm } from '../../hooks/useForm';
 
 export const TodoAdd = ({ handlerTodoAdd }) => {
-    // const [inputValue, setinputValue] = useState('');
-    // const onInputChange = ({ target }) => {
-    //     setinputValue(target.value);
-    // };
 
     const { description, onInputChange, onResetForm } = useForm({
         description: '',
