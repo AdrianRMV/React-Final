@@ -1,22 +1,21 @@
-import { useReducer } from 'react';
+import { useEffect, useReducer } from 'react';
 import { TodoAdd, TodoList } from './components';
 import { todoReducer } from './todoReducer';
 
 export const TodoApp = () => {
     const initialState = [
-        {
-            id: new Date().getTime(),
-            description: 'Recolectar la piedra del alama',
-            done: false,
-        },
-        {
-            id: new Date().getTime() + 100,
-            description: 'Recolectar la piedra del alama',
-            done: false,
-        },
+        // {
+        //     id: new Date().getTime(),
+        //     description: 'Recolectar la piedra del alama',
+        //     done: false,
+        // },
     ];
 
     const [todos, dispatch] = useReducer(todoReducer, initialState);
+
+    useEffect(() => {
+        console.log("Hola")
+    }, [todos]);
 
     const handlerTodoAdd = (todo) => {
         const action = {
