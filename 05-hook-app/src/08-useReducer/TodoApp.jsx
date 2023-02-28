@@ -9,12 +9,18 @@ export const TodoApp = () => {
         //     description: 'Recolectar la piedra del alama',
         //     done: false,
         // },
+        // localStorage.getItem('todos'),
     ];
 
-    const [todos, dispatch] = useReducer(todoReducer, initialState);
+    const init = () => {
+        // Explicitamente dice: "retorname la conversion de el string que esta en el localStorage con el nombre de 'todos' a un objeto y si es null retorna un objeto vacio, esto para que no cause error."
+        return JSON.parse(localStorage.getItem('todos')) || [];
+    }
+
+    const [todos, dispatch] = useReducer(todoReducer, initialState, init);
 
     useEffect(() => {
-        console.log("Hola")
+        localStorage.setItem('todos', JSON.stringify(todos));
     }, [todos]);
 
     const handlerTodoAdd = (todo) => {
