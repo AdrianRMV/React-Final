@@ -32,11 +32,17 @@ export const useTodo = () => {
     };
 
     const handlerToggleTodo = (id) => {
-        console.log(id);
         dispatch({
             type: '[TODO] Toggle todo',
             payload: id,
         });
     };
-    return [todos, handlerTodoAdd, handlerRemoveTodo, handlerToggleTodo];
+    return {
+        todos,
+        handlerTodoAdd,
+        handlerRemoveTodo,
+        handlerToggleTodo,
+        todosCount: todos.length,
+        pendingTodoCount: todos.filter((todo) => !todo.done).length,
+    };
 };
